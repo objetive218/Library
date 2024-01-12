@@ -19,9 +19,11 @@ function Book(title, author, pages, read) {
     };
 }
 
-/*Book.prototype.readToggle = function(){
-  this.read ? this.read = false: this.read = true;
-}*/
+Book.prototype.readToggle = function(){
+  
+  this.read === 'true' ? this.read = 'false' : this.read = 'true';
+  console.log(this.read)
+}
 
 
 
@@ -31,6 +33,7 @@ function addBookToLibrary(e) {
     myLibrary.push(add);
     main.innerHTML ="";
     reBook();
+    formAdd.classList.toggle("active");
     console.log(myLibrary);
 }
 
@@ -44,21 +47,27 @@ formAdd.addEventListener("submit", addBookToLibrary);
 
 //carts books
 const reBook = () => {myLibrary.map((e, i) => {
+    let a = e.readToggle();
     main.innerHTML += (`<div id="box${i}" class="boxBooks"> 
     <h1>${e.title}</h1>
     <h2>By:${e.author}</h2>
     <h2>${e.pages}</h2>
-    <h3>${e.read ? true : false}</h3>
-    
+    <h3 class= "status">Mark as read</h3>   
+    <label class="switch" >
+    <input type="checkbox" ${e.read === 'true' ? "checked" : ""}  onclick="${a}">
+    <span class="slider round"></span>
+    </label>
     </div>`);
 })}
 
 // firt reBook
 reBook()
-//<button onclick=${e.readToggle()}>toggle read</button>
+//
 
 // toggle form
 bttnToggle.addEventListener("click", (e) => {
   e.preventDefault();
   formAdd.classList.toggle("active");
 })
+
+//<button onclick=${e.readToggle(a)} id="test${i}">toggle read</button>
