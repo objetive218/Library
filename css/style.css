@@ -117,9 +117,7 @@ input :checked {
     -webkit-transition: .4s;
     transition: .4s;
 }
-.status{
-    
-}
+
 input:checked+.slider{
     background-color: lightgreen;
 }
