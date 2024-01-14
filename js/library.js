@@ -21,16 +21,10 @@ function Book(title, author, pages, read, validation) {
   };
 }
 
-Book.prototype.readToggle = function () {
-  /* if(addForm.querySelector('input[name="status"]:checked').value == 'true'){
-    this.read = 'false';
-  }
-  else {
-    this.read = 'true'
-  };
-  this.read === 'true' ? this.read = 'false' : this.read = 'true';
-  console.log(this.read)*/
-};
+/*Book.prototype.readToggle = function () {
+
+};*/
+
 function addBookToLibrary(e) {
   e.preventDefault();
   const add = new Book(
