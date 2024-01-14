@@ -5,6 +5,7 @@ const inputAuthor = document.querySelector("#author");
 const inputPages = document.querySelector("#pages");
 const inputRead = document.querySelector("#read");
 const bttnToggle = document.querySelector("#toggleForm");
+const backButton = document.querySelector("#back");
 const myLibrary = [];
 
 function Book(title, author, pages, read, validation) {
@@ -30,16 +31,6 @@ Book.prototype.readToggle = function () {
   this.read === 'true' ? this.read = 'false' : this.read = 'true';
   console.log(this.read)*/
 };
-
-const getReadValue = (i) => {
-  console.log(i);
-  /*if(formAdd.querySelector('select[name="read"]:checked').value === 'true') 
-  {
-
-  }
-  else return false;*/
-};
-
 function addBookToLibrary(e) {
   e.preventDefault();
   const add = new Book(
@@ -55,7 +46,7 @@ function addBookToLibrary(e) {
   console.log(myLibrary);
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tokein", 295, true, false);
+const theHobbit = new Book("The Hobbit", "J.R.R. Tokein", 295, "true", false);
 myLibrary.push(theHobbit);
 console.log(theHobbit.information());
 console.log(myLibrary);
@@ -73,9 +64,9 @@ const reBook = () => {
       const div = document.createElement("div");
       div.innerHTML = `<div id="box${i}" class="boxBooks"> 
     <h1>${e.title}</h1>
-    <h2>By:${e.author}</h2>
-    <h2>${e.pages}</h2>
-    <h3 class= "status">Mark as read</h3>   
+    <h2>By ${e.author}</h2>
+    <h2>Pages ${e.pages}</h2>
+    <h3 class= "status">Mark as read:</h3>   
     <label class="switch" >
     <input type="checkbox" name="status" id="testDom${i}" ${
         e.read === "true" ? "checked" : ""
@@ -102,5 +93,9 @@ bttnToggle.addEventListener("click", (e) => {
   formAdd.classList.toggle("active");
 });
 
+backButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  formAdd.classList.toggle("active");
+})
 //<button onclick=${e.readToggle(a)} id="test${i}">toggle read</button>
 //onclick="${e.readToggle()}"
