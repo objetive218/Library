@@ -8,6 +8,7 @@ const bttnToggle = document.querySelector("#toggleForm");
 const backButton = document.querySelector("#back");
 const myLibrary = [];
 
+// constructor
 function Book(title, author, pages, read, validation) {
   this.title = title;
   this.author = author;
@@ -21,8 +22,8 @@ function Book(title, author, pages, read, validation) {
   };
 }
 
+// no use
 /*Book.prototype.readToggle = function () {
-
 };*/
 
 function addBookToLibrary(e) {
@@ -40,6 +41,7 @@ function addBookToLibrary(e) {
   console.log(myLibrary);
 }
 
+// first book
 const theHobbit = new Book("The Hobbit", "J.R.R. Tokein", 295, "true", false);
 myLibrary.push(theHobbit);
 console.log(theHobbit.information());
@@ -79,7 +81,6 @@ const reBook = () => {
 
 // firt reBook
 reBook();
-//
 
 // toggle form
 bttnToggle.addEventListener("click", (e) => {
@@ -90,6 +91,4 @@ bttnToggle.addEventListener("click", (e) => {
 backButton.addEventListener("click", (e) => {
   e.preventDefault();
   formAdd.classList.toggle("active");
-})
-//<button onclick=${e.readToggle(a)} id="test${i}">toggle read</button>
-//onclick="${e.readToggle()}"
+});
