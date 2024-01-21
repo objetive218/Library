@@ -9,17 +9,19 @@ const backButton = document.querySelector("#back");
 const myLibrary = [];
 
 // constructor
-function Book(title, author, pages, read, validation) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.validation = validation;
-  this.information = () => {
-    return ` ${this.title} by ${this.author}, ${this.pages} pages, ${
-      this.read ? "read" : "not read yet"
-    }`;
-  };
+class Book {
+  constructor(title, author, pages, read, validation) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.validation = validation;
+    this.information = () => {
+      return ` ${this.title} by ${this.author}, ${this.pages} pages, ${
+        this.read ? "read" : "not read yet"
+      }`;
+    };
+  }
 }
 
 // no use
@@ -58,18 +60,18 @@ const reBook = () => {
     } else {
       e.validation = true;
       const div = document.createElement("div");
-      div.innerHTML = `<div id="box${i}" class="boxBooks"> 
-    <h1>${e.title}</h1>
-    <h2>By ${e.author}</h2>
-    <h2>Pages ${e.pages}</h2>
-    <h3 class= "status">Mark as read:</h3>   
-    <label class="switch" >
-    <input type="checkbox" name="status" id="testDom${i}" ${
+      div.innerHTML = `<div id="box${i}" class="boxBooks">
+     <h1>${e.title}</h1>
+     <h2>By ${e.author}</h2>
+     <h2>Pages ${e.pages}</h2>
+     <h3 class= "status">Mark as read:</h3>
+     <label class="switch" >
+     <input type="checkbox" name="status" id="testDom${i}" ${
         e.read === "true" ? "checked" : ""
       }  >
-    <span class="slider round"></span>
-    </label>
-    </div>`;
+     <span class="slider round"></span>
+     </label>
+     </div>`;
       div.addEventListener("change", () => {
         e.read ? (e.read = false) : (e.read = true);
         console.log(e.read);
@@ -80,6 +82,7 @@ const reBook = () => {
 };
 
 // firt reBook
+
 reBook();
 
 // toggle form
@@ -92,3 +95,4 @@ backButton.addEventListener("click", (e) => {
   e.preventDefault();
   formAdd.classList.toggle("active");
 });
+
